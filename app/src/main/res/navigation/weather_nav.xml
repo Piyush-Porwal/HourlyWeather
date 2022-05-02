@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigation_weather_lookup"
+    android:id="@+id/weather_nav">
+
+    <fragment
+        android:id="@+id/navigation_weather_lookup"
+        android:name="com.piyush.weatherofthecity.ui.weatherlookup.FragmentWeatherLookup"
+        tools:layout="@layout/fragment_weather_lookup">
+
+        <action
+            android:id="@+id/action_navigation_weather_lookup_to_navigation_forecast_list"
+            app:destination="@id/navigation_forecast_list"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_forecast_list"
+        android:name="com.piyush.weatherofthecity.ui.forecastlist.FragmentForecastList"
+        tools:layout="@layout/fragment_forecast_list">
+
+        <argument
+            android:name="geoData"
+            app:argType="com.piyush.weatherofthecity.data.weather.model.GeoData"/>
+
+        <action
+            android:id="@+id/action_navigation_forecast_list_to_navigation_forecast_detail"
+            app:destination="@id/navigation_forecast_detail"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_forecast_detail"
+        android:name="com.piyush.weatherofthecity.ui.forecastDetail.FragmentForecastDetail"
+        tools:layout="@layout/fragment_forecast_detail">
+
+        <argument
+            android:name="hourlyForecastData"
+            app:argType="com.piyush.weatherofthecity.data.weather.model.HourlyForecastData"/>
+
+        <argument
+            android:name="cityName"
+            app:argType="string"/>
+
+    </fragment>
+
+</navigation>

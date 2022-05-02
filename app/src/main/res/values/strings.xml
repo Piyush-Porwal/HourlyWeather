@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherOfTheCity</string>
+    <string name="look_up">Look up</string>
+    <string name="city_for_lookup_weather">City for lookup weather</string>
+</resources>

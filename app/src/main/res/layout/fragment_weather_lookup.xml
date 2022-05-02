@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.piyush.weatherofthecity.ui.weatherlookup.WeatherLookupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/weather_iv"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/cloudy"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lookup_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/weather_iv"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lookup_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/city_for_lookup_weather"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lookup_input_layout"
+            app:layout_constraintStart_toStartOf="@id/lookup_input_layout"
+            app:layout_constraintEnd_toEndOf="@id/lookup_input_layout"
+            isGone="@{!viewmodel.didTapLookup}"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/lookup_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/lookup_input_layout"
+            app:layout_constraintStart_toStartOf="@id/lookup_input_layout"
+            app:layout_constraintEnd_toEndOf="@id/lookup_input_layout"
+            app:strokeWidth="1dp"
+            android:text="@string/look_up"
+            isGone="@{viewmodel.didTapLookup}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
